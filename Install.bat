@@ -20,5 +20,5 @@ echo [+] Установка завершена!
 echo [*] Настрой удаленный доступ через Google Chrome Remote Desktop:
 echo     https://remotedesktop.google.com/access/
 echo [*] Придумай PIN для подключения и используй свой Google аккаунт.
-pause
+echo Готово!
 ENDLOCAL
