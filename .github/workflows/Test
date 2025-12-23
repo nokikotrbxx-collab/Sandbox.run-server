@@ -1,0 +1,3 @@
+- name: Run install.bat
+  shell: cmd
+  run: install.bat > logs/install.log 2>&1
