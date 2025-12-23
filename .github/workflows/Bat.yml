@@ -9,12 +9,9 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      # 1️⃣ Получаем код репозитория Sandbox.run-server
+      # 1️⃣ Получаем код репозитория
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          repository: your-username/Sandbox.run-server
-          ref: main
 
       # 2️⃣ Создаём папку для логов
       - name: Prepare logs folder
@@ -28,9 +25,9 @@ jobs:
         run: |
           install.bat > logs/install.log 2>&1
 
-      # 4️⃣ Загружаем лог как артефакт
+      # 4️⃣ Загружаем лог как артефакт (v4)
       - name: Upload log
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: install-bat-log
           path: logs/install.log
