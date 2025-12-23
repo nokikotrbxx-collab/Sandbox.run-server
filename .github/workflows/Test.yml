@@ -1,0 +1,28 @@
+name: Run install.bat on Windows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run_install:
+    runs-on: windows-2022
+    timeout-minutes: 30
+
+    steps:
+      # 1️⃣ Получаем код репозитория
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Создаём папку для логов
+      - name: Prepare logs folder
+        shell: powershell
+        run: |
+          if (-not (Test-Path logs)) { New-Item -ItemType Directory -Path logs }
+
+      # 3️⃣ Запускаем install.bat и сохраняем лог
+      - name: Run install.bat
+        shell: cmd
+        run: install.bat > logs/install.log 2>&1
+
+      # 4️⃣ Загружаем лог как артефакт
+      - name: Upload
